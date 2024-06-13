@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio Mixer</title>
+    <style>
+        .fader {
+            width: 30px;
+            height: 300px;
+            writing-mode: bt-lr;
+            -webkit-appearance: slider-vertical;
+            appearance: slider-vertical;
+        }
+        .vumeter {
+            width: 30px;
+            height: 100px;
+            background-color: #ddd;
+            margin: 10px 0;
+            position: relative;
+        }
+        .vu-fill {
+            height: 0;
+            width: 100%;
+            background-color: #4CAF50;
+        }
+    </style>
+</head>
+<body>
+    <h1>Audio Mixer</h1>
+    <div>
+        <label for="userAudioUrl">URL de tu pista:</label>
+        <input type="text" id="userAudioUrl" placeholder="Introduce la URL de tu pista" value="https://cdn.pixabay.com/audio/2022/08/02/audio_884fe92c21.mp3">
+    </div>
+    <div>
+        <label for="providedAudioUrl">URL de la pista proporcionada:</label>
+        <input type="text" id="providedAudioUrl" placeholder="Introduce la URL de la pista proporcionada" value="https://cdn.pixabay.com/audio/2022/08/02/audio_884fe92c21.mp3">
+    </div>
+    <button id="loadButton">Cargar y preparar mezcla</button>
+    <div id="mixerControls" style="display:none;">
+        <div>
+            <label for="userVolume">Volumen de tu pista:</label>
+            <input type="range" id="userVolume" class="fader" min="0" max="1" step="0.01" value="1">
+            <div id="userVuMeter" class="vumeter">
+                <div class="vu-fill" id="userVuFill"></div>
+            </div>
+        </div>
+        <div>
+            <label for="providedVolume">Volumen de la pista proporcionada:</label>
+            <input type="range" id="providedVolume" class="fader" min="0" max="1" step="0.01" value="1">
+            <div id="providedVuMeter" class="vumeter">
+                <div class="vu-fill" id="providedVuFill"></div>
+            </div>
+        </div>
+        <button id="playButton">Reproducir</button>
+        <button id="pauseButton">Pausar</button>
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
